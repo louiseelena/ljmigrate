@@ -36,6 +36,7 @@ import xml.dom.minidom
 import xmlrpclib
 from xml.sax import saxutils
 import ConfigParser
+import time
 
 __version__ = '1.5 111030a Sun Oct 30 21:41:58 PDT 2011'
 __author__ = 'C J Silverio'
@@ -943,7 +944,7 @@ def fetchItem(item):
 				return None
 			writedump(gSourceAccount, item['item'], 'entry', entry)
 			entry['event'] = convertBinary(entry['event'])
-
+			time.sleep(1)
 			eobj = Entry(entry, gSourceAccount.user, gSourceAccount.journal)
 			gAllEntries[itemid] = eobj
 			newentries += 1
