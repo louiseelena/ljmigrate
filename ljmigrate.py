@@ -944,11 +944,12 @@ def fetchItem(item):
 				return None
 			writedump(gSourceAccount, item['item'], 'entry', entry)
 			entry['event'] = convertBinary(entry['event'])
-			time.sleep(1)
+			
 			eobj = Entry(entry, gSourceAccount.user, gSourceAccount.journal)
 			gAllEntries[itemid] = eobj
 			newentries += 1
 			keepTrying = 0
+			time.sleep(5)
 
 		except socket.gaierror, e:
 			ljmException("Socket error. Double-check your account information, and your net connection.", e)
